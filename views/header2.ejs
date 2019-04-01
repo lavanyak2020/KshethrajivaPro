@@ -11,7 +11,7 @@
   <body>
     <!-- Navigation Bar -->
     <nav class="navbar navbar-expand-lg navbar-light bg-light">
-      <a class="navbar-brand" href="#">KsethrajivaPro</a>
+      <a class="navbar-brand" href="/">KsethrajivaPro</a>
       <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
       </button>
@@ -19,22 +19,19 @@
       <div class="collapse navbar-collapse" id="navbarSupportedContent">
         <ul class="navbar-nav mr-auto">
           <li class="nav-item">
-            <a class="nav-link" href="#">New</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="#">Old</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="#">Videos</a>
+            <a class="nav-link" href="/orders">Orders</a>
           </li>
           <li class="nav-item">
             <a class="nav-link" data-toggle="modal" data-target="#exampleModalLong2" href="#">Sell</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="#">ContactUs</a>
+            <a class="nav-link" href="/video">Videos</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="#">AboutUs</a>
+            <a class="nav-link" href="/contact">ContactUs</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="/about">AboutUs</a>
           </li>
         </ul>
         <form class="form-inline my-2 my-lg-0">
@@ -83,21 +80,37 @@
                    <input type="text" name="Cost" class="form-control" placeholder="Cost" required>
                  </div>
                  <div class="col">
+                   <label for="inputCity">Discount</label>
+                   <input type="text" name="discount"  class="form-control" placeholder="Discount" required>
+                 </div>
+               </div>
+               <div class="form-row">
+                 <div class="col">
                    <label for="inputCity">Quantity</label>
-                   <input type="text" name="Quantity"  class="form-control" placeholder="Quantity" required>
+                   <input type="text" name="quantity" class="form-control" placeholder="Quantity" required>
+                 </div>
+                 <div class="col">
+                   <label for="inputCity">Warranty</label>
+                   <input type="text" name="warranty"  class="form-control" placeholder="Warranty" required>
                  </div>
                </div>
                <div class="form-row">
                  <div class="col">
                    <label for="comment">Description</label>
-                   <textarea class="form-control" rows="5" id="comment" name="text"></textarea>
+                   <textarea class="form-control" rows="5" id="comment" name="description"></textarea>
                  </div>
                </div>
-               <%= typeof msg != 'undefined' ? msg :'' %><br>
+               <div class="form-row">
+                  <div class="col">
+                    <label for="comment">Specification</label>
+                    <textarea class="form-control" rows="5" id="comment" name="specification"></textarea>
+                  </div>
+                </div>
+               <h1><%=msg%></h1>
                <div class="form-row">
                  <div class="col">
                    <label for="exampleFormControlFile1">Select Image</label>
-                    <input type="file"  name="file" class="form-control-file" id="exampleFormControlFile1" multiple>
+                    <input type="file"  name="file" class="form-control-file" id="exampleFormControlFile1">
                  </div>
                </div>
                 <div class="modal-footer" style="margin-bottom:20px;">
@@ -111,7 +124,5 @@
         </div>
       </div>
     </div>
-    <!--Upload
-
-  </body>
+ </body>
 </html>

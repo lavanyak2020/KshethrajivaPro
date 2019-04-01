@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Welcome to Admin Home</title>
+        <meta charset="utf-8">
+        <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    </head>
+    <body>
+        <div>
+            <% include header2 %>
+        </div>
+        <div class="container-fluid">
+            <div class="row" style="height: 5%;border: 2px solid gray;padding: 10px;">
+                <div class="col-sm-2" style="text-align: center;">
+                    <span><strong>Product</strong></span>
+                </div>
+                <div class="col-sm-2" style="text-align: center;">
+                    <span><strong>Description</strong></span>
+                </div>
+                <div class="col-sm-2" style="text-align: center;">
+                    <span><strong>Quantity</strong></span>
+                </div>
+                <div class="col-sm-2" style="text-align: center;">
+                    <span><strong>Price</strong></span>
+                </div>
+                <div class="col-sm-2" style="text-align: center;">
+                    <span><strong>Discount</strong></span>
+                </div>
+                <div class="col-sm-2" style="text-align: center;">
+                    <span><strong>Action</strong></span>
+                </div>
+            </div>
+            <%for (var i = 0; i < result1.length; i++) {%>
+                <form method="POST" action="produp?pid=<%=result1[i]._id%>">
+                    <div class="row" style="height: 15%;border: 2px solid gray;padding: 10px;">
+                        <div class="col-sm-2" style="text-align: center;">
+                            <% var pic ="../assets/uploads/"+result1[i].image %>
+                            <img src=<%= pic %> height="100px">
+                        </div>
+                        <div class="col-sm-2" style="text-align: left;">
+                            <p style="font-size: 12px;font-family: serif;"><strong>
+                                <%= result1[i].prodName %><br>
+                                <%= result1[i].brandName %><br>
+                                <% var details = result1[i].specification %>
+                                <% %>
+                                </strong>
+                            </p>
+                        </div>
+                        <div class="col-sm-2" style="text-align: center;">
+                            <div class="form-group">
+                                <input name="quantity" type="text" class="form-control" id="usr" value=<%= result1[i].quantity %>>
+                            </div>
+                        </div>
+                        <div class="col-sm-2" style="text-align: center;">
+                            <div class="form-group">
+                            <input name="price"ype="text" class="form-control" id="usr" value=<%= result1[i].price %>>
+                            </div>
+                        </div>
+                        <div class="col-sm-2" style="text-align: center;">
+                            <div class="form-group">
+                                <input name="discount" type="text" class="form-control" id="usr" value=<%= result1[i].discount %>>
+                            </div>
+                        </div>
+                        
+                        <div class="col-sm-1" style="text-align: center;">
+                            <a href="/delupq?pid=<%=result1[i]._id%>"><img src="../assets/images/rubbish-bin.png" height="25px" style="float: left;margin-left: 10%"></a>
+                        </div>
+                        <div class="col-sm-1" style="text-align: center;">
+                            <button type="submit" class="btn btn-outline-primary">Save</button>
+                        </div>
+                    </div>
+                </form>
+            <%} %>
+        </div>
+
+        <div>
+                <% include footer %>
+        </div>
+    </body>
+</html>

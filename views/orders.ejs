@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Welcome to Admin Home</title>
+        <meta charset="utf-8">
+        <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    </head>
+    <body>
+        <div>
+            <% include header2 %>
+        </div>
+        <div class="container-fluid">
+            <div class="row" style="height: 5%;border: 2px solid gray;padding: 10px;">
+                <div class="col-sm-2" style="text-align: center;">
+                    <span><strong>Product</strong></span>
+                </div>
+                <div class="col-sm-2" style="text-align: center;">
+                    <span><strong>Description</strong></span>
+                </div>
+                <div class="col-sm-2" style="text-align: center;">
+                    <span><strong>OrderedQuantity</strong></span>
+                </div>
+                <div class="col-sm-2" style="text-align: center;">
+                    <span><strong>Price</strong></span>
+                </div>
+                <div class="col-sm-2" style="text-align: center;">
+                    <span><strong>UserDetails</strong></span>
+                </div>
+                <div class="col-sm-2" style="text-align: center;">
+                    <span><strong>Action</strong></span>
+                </div>
+            </div>
+            <%for (var i = 0; i < res3.length; i++) {%>
+                <form method="POST" action="">
+                    <div class="row" style="height: 15%;border: 2px solid gray;padding: 10px;">
+                        <div class="col-sm-2" style="text-align: center;">
+                            <% var k=0 ;%>
+                            <% for (k = 0; k < result1.length; k++) {%>
+                                <%if(String(res3[i].pid) == String(result1[k]._id)) break;%>
+                            <%  } %>
+                            <% var pic ="../assets/uploads/"+result1[k].image %>
+                            <img src=<%= pic %> height="100px">
+                        </div>
+                        <div class="col-sm-2" style="text-align: left;">
+                            <p style="font-size: 12px;font-family: serif;"><strong>
+                                <%= result1[k].prodName %><br>
+                                <%= result1[k].brandName %><br>
+                                </strong>
+                            </p>
+                        </div>
+                        <div class="col-sm-2" style="text-align: center;">
+                            <div class="form-group">
+                                <input name="quantity" type="text" class="form-control" id="usr" value=<%= res3[i].quantity %>>
+                            </div>
+                        </div>
+                        <div class="col-sm-2" style="text-align: center;">
+                            <div class="form-group">
+                            <input name="price"ype="text" class="form-control" id="usr" value=<%= result1[i].price*res3[i].quantity %>>
+                            </div>
+                        </div>
+                        <div class="col-sm-2" style="text-align: left;">
+                            <p style="font-size: 12px;font-family: serif;"><strong>
+                                <%= res3[i].uid %><br>
+                                </strong>
+                            </p>
+                        </div>
+                    </div>
+                </form>
+            <%} %>
+        </div>
+
+        <div>
+                <% include footer %>
+        </div>
+    </body>
+</html>
